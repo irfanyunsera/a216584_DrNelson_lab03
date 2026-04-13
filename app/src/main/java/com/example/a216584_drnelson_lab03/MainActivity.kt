@@ -63,7 +63,7 @@ fun MainAppContainer() {
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
-            // FIX: Gunakan drawerContainerColor (ikut spec library kau)
+
             ModalDrawerSheet(
                 drawerContainerColor = TransitTertiary,
                 modifier = Modifier.width(300.dp)
@@ -113,7 +113,7 @@ fun HomeScreen(
 ) {
     var searchedResult by remember { mutableStateOf("") }
     var mapImage by remember { mutableIntStateOf(R.drawable.bus_map) }
-    // Letak bawah mapImage
+
     val estimatedTime = when {
         searchedResult.contains("utm", ignoreCase = true) -> "15 min"
         searchedResult.contains("larkin", ignoreCase = true) -> "25 min"
@@ -220,7 +220,7 @@ fun HomeScreen(
             Text("Search")
         }
 
-        // INI YANG AKU LETAK BALIK (JANGAN MARAH)
+        
         if (searchedResult.isNotEmpty()) {
             Text(
                 text = "Showing route to: $searchedResult",
@@ -236,12 +236,12 @@ fun HomeScreen(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(250.dp) // Tinggikan sikit bagi puas hati tengok
+                .height(250.dp)
                 .padding(vertical = 8.dp)
         ) {
             Card(
                 modifier = Modifier.fillMaxSize(),
-                shape = RoundedCornerShape(24.dp), // Rounding lebih besar nampak lebih moden
+                shape = RoundedCornerShape(24.dp),
                 elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
             ) {
                 Box {
@@ -252,17 +252,16 @@ fun HomeScreen(
                         contentScale = ContentScale.Crop
                     )
 
-                    // Layer Gradient supaya nampak "Deep"
+
                     Surface(
                         color = Color.Black.copy(alpha = 0.2f),
                         modifier = Modifier.fillMaxSize()
                     ) {}
 
-                    // FLOATING INFO BOX (Ni yang buat nampak macam Apps Navigasi)
 
 
-                    // DESTINATION LABEL (Kat bawah map)
-                    // FLOATING INFO BOX (Dynamic Version)
+
+
                     if (searchedResult.isNotEmpty()) {
                         Card(
                             modifier = Modifier
@@ -277,13 +276,13 @@ fun HomeScreen(
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
                                 Text(
-                                    text = estimatedTime, // Pakai variable dynamic
+                                    text = estimatedTime,
                                     fontWeight = FontWeight.Bold,
                                     color = TransitPrimary,
                                     fontSize = 16.sp
                                 )
                                 Text(
-                                    text = estimatedDistance, // Pakai variable dynamic
+                                    text = estimatedDistance,
                                     fontSize = 12.sp,
                                     color = Color.Gray
                                 )
